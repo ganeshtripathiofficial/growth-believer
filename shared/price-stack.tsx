@@ -1,0 +1,5 @@
+import { Check } from "lucide-react"
+import { CtaButton } from "./cta-button"
+export type Plan = { name: string; description: string; price: string; cadence?: string; detail: string; features: string[]; cta: string; href: string; featured?: boolean }
+/** The two-tier offer stack used wherever the offer is presented. */
+export function PriceStack({ plans }: { plans: Plan[] }) { return <div className="me-plans">{plans.map((plan) => <article className={plan.featured ? "me-plan me-plan-featured" : "me-plan"} key={plan.name}><div><h2>{plan.name}</h2><p className="me-plan-intro">{plan.description}</p></div><div className="me-plan-rate"><strong>{plan.price}</strong>{plan.cadence && <span>{plan.cadence}</span>}</div><p className="me-plan-detail">{plan.detail}</p><hr className="me-rule" /><ul className="me-plan-features">{plan.features.map((feature) => <li key={feature}><span className="me-tick" aria-hidden><Check /></span>{feature}</li>)}</ul><CtaButton href={plan.href} className="me-plan-cta">{plan.cta}</CtaButton></article>)}</div> }

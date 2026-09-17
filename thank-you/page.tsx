@@ -1,0 +1,23 @@
+import { ArrowRight, CheckCircle2, Download, Store } from "lucide-react"
+import { CtaButton } from "../shared/cta-button"
+import { Footer } from "../shared/footer"
+import { Header } from "../shared/header"
+import { Section } from "../shared/section"
+import { brandStyles, sharedStyles } from "../shared/tokens"
+
+const names: Record<string, string> = { "focus-guide": "The Focus & Consistency Guide", "career-guide": "The Career Clarity Guide", "business-guide": "The Business Action Guide" }
+
+export default function ThankYouPage() {
+  const productKey = new URLSearchParams(window.location.search).get("product") || "focus-guide"
+  const product = names[productKey] || names["focus-guide"]
+  return <main className="me-page" id="top"><style>{brandStyles + sharedStyles + styles}</style>
+    <Header links={[{ label: "Confirmation", href: "#confirmation" }, { label: "Next steps", href: "#next" }]} loginHref="/storefront" cta={{ label: "Browse resources", href: "/storefront" }} />
+    <Section id="confirmation" className="gb-thank-hero"><div className="me-wrap"><span className="gb-checkmark"><CheckCircle2 aria-hidden="true" /></span><p className="me-eyebrow">Thank you</p><h1>Your request for {product} has been received.</h1><p>We have your selected resource and order details. This MVP now takes you to a simple confirmation flow so the final delivery step can be connected later.</p></div></Section>
+    <Section id="next" className="gb-thank-next"><div className="me-wrap"><div className="me-section-heading"><p className="me-eyebrow">What happens next</p><h2>A clear path from here.</h2></div><div className="gb-thank-grid"><article><Download aria-hidden="true" /><b>01</b><h3>Delivery</h3><p>The digital delivery connection can be attached to the completed order.</p></article><article><CheckCircle2 aria-hidden="true" /><b>02</b><h3>Confirmation</h3><p>Your selected resource stays associated with the order request.</p></article><article><Store aria-hidden="true" /><b>03</b><h3>Keep exploring</h3><p>Find another focused resource whenever you are ready for the next problem.</p></article></div><div className="gb-thank-cta"><div><p className="me-eyebrow">Continue your growth</p><h2>There is always another useful step.</h2><p>Explore the Growth Believer storefront or take the assessment again.</p></div><CtaButton href="/storefront" variant="violet">VISIT THE STOREFRONT</CtaButton></div></div></Section>
+    <Footer columns={[{ heading: "Explore", links: ["Products", "Growth Assessment", "Guides"] }, { heading: "Growth", links: ["Productivity", "Mindset", "Career", "Business"] }]} detail="Practical digital resources for making progress in real life." />
+  </main>
+}
+
+const styles = `
+.gb-thank-hero{padding:clamp(5rem,7vw,8.5rem) 0;background:radial-gradient(circle at 50% 0,#373274,transparent 45%),var(--me-bg-deep);text-align:center}.gb-thank-hero>div{max-width:56rem}.gb-checkmark{display:grid;place-items:center;width:4rem;height:4rem;margin:auto;border:1px solid var(--me-mint);border-radius:1.2rem;background:#214438;color:var(--me-mint)}.gb-checkmark svg{width:2rem}.gb-thank-hero .me-eyebrow{margin-top:1.5rem}.gb-thank-hero h1{max-width:16ch;margin:1rem auto 0;font-size:clamp(2.35rem,1.2rem + 4.3vw,4.5rem);font-weight:600;letter-spacing:-.05em;line-height:1.03}.gb-thank-hero p:not(.me-eyebrow){max-width:56ch;margin:1.25rem auto 0;color:var(--me-muted);font-size:1.05rem;line-height:1.68}.gb-thank-next{padding:var(--me-section) 0;background:var(--me-bg)}.gb-thank-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:2.5rem}.gb-thank-grid article{padding:1.5rem;border:1px solid var(--me-line);border-radius:var(--me-r-lg);background:var(--me-surface)}.gb-thank-grid svg{width:1.4rem;color:var(--me-violet-2)}.gb-thank-grid b{display:block;margin-top:1rem;color:var(--me-quiet);font-size:.7rem}.gb-thank-grid h3{margin-top:.5rem;font-size:1.05rem}.gb-thank-grid p{margin-top:.5rem;color:var(--me-muted);font-size:.87rem;line-height:1.6}.gb-thank-cta{display:flex;align-items:center;justify-content:space-between;gap:2rem;margin-top:2rem;padding:clamp(1.5rem,1rem + 2vw,2.5rem);border:1px solid #aaa5ff;border-radius:var(--me-r-xl);background:#28245d}.gb-thank-cta h2{margin-top:.75rem;font-size:clamp(1.7rem,1.1rem + 2vw,2.45rem);font-weight:580;letter-spacing:-.035em;line-height:1.1}.gb-thank-cta p:not(.me-eyebrow){max-width:48ch;margin-top:.75rem;color:#e2e1ff;line-height:1.6}.gb-thank-cta .me-btn{flex:none}@media(max-width:48rem){.gb-thank-grid{grid-template-columns:1fr}.gb-thank-cta{align-items:flex-start;flex-direction:column}.gb-thank-cta .me-btn{width:100%}}
+`
