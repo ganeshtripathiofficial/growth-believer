@@ -25,7 +25,7 @@ export default function Homepage() {
       <style>{brandStyles + sharedStyles + styles}</style>
       <Header
         links={[{ label: "Start here", href: "/hero" }, { label: "Growth areas", href: "#areas" }, { label: "Storefront", href: "/storefront" }]}
-        loginHref="/quiz"
+        loginHref="/login"
         cta={{ label: "Start growing", href: "/hero" }}
       />
 
